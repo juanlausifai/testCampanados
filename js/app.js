@@ -135,3 +135,33 @@ postBtn.on('click', function() {
     crearMensajeHTML( mensaje, usuario );
 
 });
+
+// Detectar cambios de conexión
+function isOnline() {
+
+    if ( navigator.onLine ) {
+        // tenemos conexión
+        // console.log('online');
+        $.mdtoast('Online', {
+            interaction: true,
+            interactionTimeout: 1000,
+            actionText: 'OK!',
+            type: 'info'
+        });
+
+
+    } else{
+        // No tenemos conexión
+        $.mdtoast('Offline', {
+            interaction: true,
+            actionText: 'OK',
+            type: 'warning'
+        });
+    }
+
+}
+
+window.addEventListener('online', isOnline );
+window.addEventListener('offline', isOnline );
+
+isOnline();
